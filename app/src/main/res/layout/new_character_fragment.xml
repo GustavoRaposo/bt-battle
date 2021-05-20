@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:text="Fire mage"
         app:icon="@drawable/ic_fire"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNewCharacterConfirm"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNewCharacterCancel"
         app:layout_constraintEnd_toStartOf="@+id/buttonNewCharacterClassWater"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -113,6 +113,26 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonNewCharacterCancel"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        app:cornerRadius="30dp"
+        app:icon="@drawable/ic_cancel"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonNewCharacterConfirm"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNewCharacterClassFire" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonNewCharacterConfirm"
         android:layout_width="48dp"
         android:layout_height="48dp"
@@ -125,8 +145,10 @@
         app:icon="@drawable/ic_confirm"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonNewCharacterCancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonNewCharacterClassFire" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonNewCharacterCancel"
+        app:layout_constraintTop_toTopOf="@+id/buttonNewCharacterCancel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

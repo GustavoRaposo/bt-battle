@@ -18,7 +18,7 @@ import com.google.android.material.textview.MaterialTextView;
 import com.gustavoraposo.btbattle.R;
 import com.gustavoraposo.btbattle.viewmodel.GameViewModel;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private GameViewModel viewModel;
     private MaterialTextView mTextViewPlayerName;
@@ -47,6 +47,7 @@ public class ProfileFragment extends Fragment {
         mTextViewSpeedPoints= view.findViewById(R.id.textViewProfileSpeed);
         mTextViewLevel = view.findViewById(R.id.textViewProfileLevel);
         mProgressBarExp = view.findViewById(R.id.progressBarProfileExp);
+        view.findViewById(R.id.buttonProfileBack).setOnClickListener(this);
 
         return view;
     }
@@ -65,4 +66,10 @@ public class ProfileFragment extends Fragment {
         mProgressBarExp.setProgress(viewModel.getExpProgress());
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.buttonProfileBack){
+            requireActivity().onBackPressed();
+        }
+    }
 }
