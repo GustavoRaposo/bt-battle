@@ -1,21 +1,18 @@
 package com.gustavoraposo.btbattle.ui;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.android.material.textview.MaterialTextView;
 import com.gustavoraposo.btbattle.R;
@@ -23,8 +20,6 @@ import com.gustavoraposo.btbattle.adapter.DungeonAdapter;
 import com.gustavoraposo.btbattle.adapter.RecyclerViewClickInterface;
 import com.gustavoraposo.btbattle.model.data.DungeonFloor;
 import com.gustavoraposo.btbattle.viewmodel.DungeonViewModel;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -36,6 +31,7 @@ public class DungeonFragment extends Fragment implements View.OnClickListener, R
     private DungeonAdapter mDungeonAdapter;
     private MaterialTextView mTextViewDungeonFloorName;
     private List<DungeonFloor> mFloors;
+    private int floorSelected = 1;
 
     public static DungeonFragment newInstance() {
         return new DungeonFragment();
@@ -70,6 +66,12 @@ public class DungeonFragment extends Fragment implements View.OnClickListener, R
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonDungeonConfirm:
+                viewModel.loadMonsters(
+                        mFloors.get(floorSelected).getMonsters(),
+                        mFloors.get(floorSelected).getMinLevel(),
+                        mFloors.get(floorSelected).getMaxLevel()
+                );
+                mNavController.navigate(R.id.floorFragment);
                 break;
             case R.id.buttonDungeonBack:
                 requireActivity().onBackPressed();
@@ -80,6 +82,7 @@ public class DungeonFragment extends Fragment implements View.OnClickListener, R
     @Override
     public void onItemClick(int position) {
         mTextViewDungeonFloorName.setText(mFloors.get(position).getFloorName());
+        floorSelected = position;
     }
 
     @Override

@@ -12,50 +12,33 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewItemDungeonFloorName"
+            android:id="@+id/textViewItemFloorMonsterName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:drawableStart="@drawable/ic_dungeon"
+            android:drawableStart="@drawable/ic_monster"
             android:text="Name"
-            android:textAlignment="textEnd"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textViewItemDungeonFloorMonster"
+            app:layout_constraintEnd_toStartOf="@+id/textViewItemFloorMonsterLevel"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewItemDungeonFloorMonster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_monster"
-            android:text="x"
-            android:textAlignment="textEnd"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textViewItemDungeonFloorLevel"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textViewItemDungeonFloorName"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textViewItemDungeonFloorLevel"
+            android:id="@+id/textViewItemFloorMonsterLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="Lvl x ~ y"
-            android:textAlignment="textEnd"
+            android:text="Lvl 1"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textViewItemDungeonFloorMonster"
+            app:layout_constraintStart_toEndOf="@+id/textViewItemFloorMonsterName"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

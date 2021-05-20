@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -16,11 +15,11 @@ import android.widget.ProgressBar;
 
 import com.google.android.material.textview.MaterialTextView;
 import com.gustavoraposo.btbattle.R;
-import com.gustavoraposo.btbattle.viewmodel.GameViewModel;
+import com.gustavoraposo.btbattle.viewmodel.ProfileViewModel;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
-    private GameViewModel viewModel;
+    private ProfileViewModel viewModel;
     private MaterialTextView mTextViewPlayerName;
     private MaterialTextView mTextViewHealthPoints;
     private MaterialTextView mTextViewMagicPoints;
@@ -55,7 +54,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel = new ViewModelProvider(this).get(GameViewModel.class);
+        viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         mImageViewPlayerClass.setImageResource(viewModel.getPlayerClass());
         mTextViewPlayerName.setText(viewModel.getPlayerName());
         mTextViewHealthPoints.setText(viewModel.getPlayerHealthPoints());

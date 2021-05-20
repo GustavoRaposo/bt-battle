@@ -15,11 +15,11 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.textview.MaterialTextView;
 import com.gustavoraposo.btbattle.R;
-import com.gustavoraposo.btbattle.viewmodel.GameViewModel;
+import com.gustavoraposo.btbattle.viewmodel.SetUpViewModel;
 
 public class NewCharacterFragment extends Fragment implements View.OnClickListener {
 
-    private GameViewModel viewModel;
+    private SetUpViewModel viewModel;
     private NavController mNavController;
     private ImageView mImageClassSelected;
     private MaterialTextView mTextViewHealthPoints;
@@ -52,7 +52,7 @@ public class NewCharacterFragment extends Fragment implements View.OnClickListen
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel = new ViewModelProvider(this).get(GameViewModel.class);
+        viewModel = new ViewModelProvider(this).get(SetUpViewModel.class);
         mNavController = Navigation.findNavController(requireView());
         selectClass(0);
     }

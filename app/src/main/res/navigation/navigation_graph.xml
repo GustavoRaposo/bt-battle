@@ -23,7 +23,11 @@
         android:id="@+id/dungeonFragment"
         android:name="com.gustavoraposo.btbattle.ui.DungeonFragment"
         android:label="dungeon_fragment"
-        tools:layout="@layout/dungeon_fragment" />
+        tools:layout="@layout/dungeon_fragment" >
+        <action
+            android:id="@+id/action_dungeonFragment_to_floorFragment"
+            app:destination="@id/floorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.gustavoraposo.btbattle.ui.HomeFragment"
@@ -71,4 +75,9 @@
             android:id="@+id/action_splashFragment_to_newPlayerFragment"
             app:destination="@id/newPlayerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/floorFragment"
+        android:name="com.gustavoraposo.btbattle.ui.FloorFragment"
+        android:label="floor_fragment"
+        tools:layout="@layout/floor_fragment" />
 </navigation>

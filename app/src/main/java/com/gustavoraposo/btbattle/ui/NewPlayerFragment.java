@@ -16,11 +16,11 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.button.MaterialButton;
 import com.gustavoraposo.btbattle.R;
-import com.gustavoraposo.btbattle.viewmodel.GameViewModel;
+import com.gustavoraposo.btbattle.viewmodel.SetUpViewModel;
 
 public class NewPlayerFragment extends Fragment implements View.OnClickListener {
 
-    private GameViewModel viewModel;
+    private SetUpViewModel viewModel;
     private NavController mNavController;
     private MaterialButton mButtonConfirm;
     private MaterialButton mButtonCancel;
@@ -45,7 +45,7 @@ public class NewPlayerFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel = new ViewModelProvider(this).get(GameViewModel.class);
+        viewModel = new ViewModelProvider(this).get(SetUpViewModel.class);
         mNavController = Navigation.findNavController(requireView());
         mButtonConfirm.setOnClickListener(this);
         mButtonCancel.setOnClickListener(this);

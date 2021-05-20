@@ -24,11 +24,10 @@ public class Player {
         this.name = name;
         this.playerClass = playerClass;
         this.speed = 100;
-        this.level = 1;
-        this.exp = 50;
-        this.expToLevelUp = this.level * 100 * 1.25;
+        this.level = 0;
         setIVs();
         initPlayerValues(playerClass);
+        levelUp();
     }
 
     public Player(String name, int playerClass, int level, int healthPoints, int magicPoints, int defensePoints, int speed) {
@@ -103,11 +102,12 @@ public class Player {
 
     public void levelUp(){
         this.level = this.level + 1;
-        this.expToLevelUp = (int) (this.level * 100 * 1.25);
+        this.expToLevelUp = (int) (this.expToLevelUp + (this.level * 100 * 1.25));
         this.exp = 0;
 
-        Random random = new Random();
+
         for(int i = 0; i < 3; i++){
+            Random random = new Random();
             int aux = this.baseHealthPoints + random.nextInt(this.ivHealthPoints) + 1;
             if(aux > this.baseHealthPoints){
                 this.baseHealthPoints = aux;
@@ -115,6 +115,7 @@ public class Player {
         }
 
         for(int i = 0; i < 3; i++){
+            Random random = new Random();
             int aux = this.baseMagicPoints + random.nextInt(this.iVMagicPoints) + 1;
             if(aux > this.baseMagicPoints){
                 this.baseMagicPoints = aux;
@@ -122,6 +123,7 @@ public class Player {
         }
 
         for(int i = 0; i < 3; i++){
+            Random random = new Random();
             int aux = this.baseDefensePoints + random.nextInt(this.iVDefensePoints) + 1;
             if(aux > this.baseDefensePoints){
                 this.baseDefensePoints = aux;
@@ -129,6 +131,7 @@ public class Player {
         }
 
         for(int i = 0; i < 3; i++){
+            Random random = new Random();
             int aux = this.speed + random.nextInt(this.ivSpeed) + 1;
             if(aux > this.speed){
                 this.speed = aux;

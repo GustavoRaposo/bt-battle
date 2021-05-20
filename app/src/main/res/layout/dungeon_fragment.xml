@@ -71,7 +71,7 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonDungeonBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/item_dungeon_floor"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDungeonFloor" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDungeonFloor"
+        tools:listitem="@layout/item_dungeon_floor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,17 +1,20 @@
 package com.gustavoraposo.btbattle.model;
 
 import com.gustavoraposo.btbattle.model.data.DungeonFloor;
+import com.gustavoraposo.btbattle.model.data.Monster;
 import com.gustavoraposo.btbattle.model.data.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Facade {
     private static Facade instance;
     private String playerName;
+    private List<Monster> monsters;
 
-    public static synchronized Facade getInstance(){
-        if(instance == null){
+    public static synchronized Facade getInstance() {
+        if (instance == null) {
             instance = new Facade();
         }
         return instance;
@@ -39,7 +42,7 @@ public class Facade {
         this.playerName = playerName;
     }
 
-    public List<DungeonFloor> getFloors(){
+    public List<DungeonFloor> getFloors() {
         List<DungeonFloor> floors = new ArrayList<>();
         floors.add(new DungeonFloor("1st Floor", 3, 1, 5));
         floors.add(new DungeonFloor("2nd Floor", 5, 3, 7));
@@ -48,5 +51,27 @@ public class Facade {
         floors.add(new DungeonFloor("5th Floor", 15, 10, 20));
         floors.add(new DungeonFloor("6th Floor", 20, 15, 25));
         return floors;
+    }
+
+    public void loadMonsters(int size, int minLevel, int maxLevel) {
+        List<Monster> monsters = new ArrayList<>();
+        for (int i = 0; i < size - 1; i++) {
+            Random random = new Random();
+            monsters.add(
+                    new Monster(
+                            "minion",
+                            random.nextInt(3),
+                            random.nextInt((maxLevel - minLevel) + 1) + minLevel
+                    )
+            );
+        }
+        Random random = new Random();
+        monsters.add(new Monster("Boss", random.nextInt(3), maxLevel + 2));
+
+        this.monsters = monsters;
+    }
+
+    public List<Monster> getMonsters() {
+        return monsters;
     }
 }

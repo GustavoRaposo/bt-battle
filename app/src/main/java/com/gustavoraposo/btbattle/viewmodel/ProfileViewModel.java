@@ -1,32 +1,15 @@
 package com.gustavoraposo.btbattle.viewmodel;
 
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.gustavoraposo.btbattle.R;
 import com.gustavoraposo.btbattle.model.Facade;
-import com.gustavoraposo.btbattle.model.data.Player;
 
-import java.util.regex.Pattern;
+public class ProfileViewModel extends ViewModel {
+    private Facade facade;
 
-public class GameViewModel extends ViewModel {
-    private Facade facade = Facade.getInstance();
-    private int playerClass;
-
-
-    public Boolean setPlayerName(String playerName) {
-        if (Pattern.matches("[a-zA-Z0-9]{1,10}", playerName)){
-            facade.setPlayerName(playerName);
-            return true;
-        }else return false;
-    }
-
-    public void setPlayerClass(int playerClass) {
-        this.playerClass = playerClass;
-    }
-
-    public void setPlayer(){
-        facade.setPlayer(new Player(facade.getPlayerName(), playerClass));
+    public ProfileViewModel(){
+        facade = Facade.getInstance();
     }
 
     public int getPlayerClass(){
