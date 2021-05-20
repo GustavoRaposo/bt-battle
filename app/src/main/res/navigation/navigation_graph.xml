@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/battleFragment"
+        android:name="com.gustavoraposo.btbattle.ui.BattleFragment"
+        android:label="battle_fragment"
+        tools:layout="@layout/battle_fragment" />
+    <fragment
+        android:id="@+id/connectionFragment"
+        android:name="com.gustavoraposo.btbattle.ui.ConnectionFragment"
+        android:label="connection_fragment"
+        tools:layout="@layout/connection_fragment" >
+        <action
+            android:id="@+id/action_connectionFragment_to_battleFragment"
+            app:destination="@id/battleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dungeonFragment"
+        android:name="com.gustavoraposo.btbattle.ui.DungeonFragment"
+        android:label="dungeon_fragment"
+        tools:layout="@layout/dungeon_fragment" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.gustavoraposo.btbattle.ui.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_dungeonFragment"
+            app:destination="@id/dungeonFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_connectionFragment"
+            app:destination="@id/connectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newCharacterFragment"
+        android:name="com.gustavoraposo.btbattle.ui.NewCharacterFragment"
+        android:label="new_character_fragment"
+        tools:layout="@layout/new_character_fragment" >
+        <action
+            android:id="@+id/action_newCharacterFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPlayerFragment"
+        android:name="com.gustavoraposo.btbattle.ui.NewPlayerFragment"
+        android:label="new_player_fragment"
+        tools:layout="@layout/new_player_fragment" >
+        <action
+            android:id="@+id/action_newPlayerFragment_to_newCharacterFragment"
+            app:destination="@id/newCharacterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.gustavoraposo.btbattle.ui.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.gustavoraposo.btbattle.ui.SplashFragment"
+        android:label="splash_fragment"
+        tools:layout="@layout/splash_fragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_newPlayerFragment"
+            app:destination="@id/newPlayerFragment" />
+    </fragment>
+</navigation>
