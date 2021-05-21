@@ -31,7 +31,7 @@ public class DungeonFragment extends Fragment implements View.OnClickListener, R
     private DungeonAdapter mDungeonAdapter;
     private MaterialTextView mTextViewDungeonFloorName;
     private List<DungeonFloor> mFloors;
-    private int floorSelected = 1;
+    private Integer floorSelected = null;
 
     public static DungeonFragment newInstance() {
         return new DungeonFragment();
@@ -66,12 +66,14 @@ public class DungeonFragment extends Fragment implements View.OnClickListener, R
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonDungeonConfirm:
-                viewModel.loadMonsters(
-                        mFloors.get(floorSelected).getMonsters(),
-                        mFloors.get(floorSelected).getMinLevel(),
-                        mFloors.get(floorSelected).getMaxLevel()
-                );
-                mNavController.navigate(R.id.floorFragment);
+                if(floorSelected != null){
+                    viewModel.loadMonsters(
+                            mFloors.get(floorSelected).getMonsters(),
+                            mFloors.get(floorSelected).getMinLevel(),
+                            mFloors.get(floorSelected).getMaxLevel()
+                    );
+                    mNavController.navigate(R.id.floorFragment);
+                }
                 break;
             case R.id.buttonDungeonBack:
                 requireActivity().onBackPressed();

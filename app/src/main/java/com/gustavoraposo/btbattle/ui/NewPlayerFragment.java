@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.button.MaterialButton;
+import com.gustavoraposo.btbattle.MainActivity;
 import com.gustavoraposo.btbattle.R;
 import com.gustavoraposo.btbattle.viewmodel.SetUpViewModel;
 
@@ -38,7 +40,6 @@ public class NewPlayerFragment extends Fragment implements View.OnClickListener 
         mButtonConfirm = view.findViewById(R.id.buttonNewPlayerConfirm);
         mButtonCancel = view.findViewById(R.id.buttonNewPlayerCancel);
         mEditTextPlayerName = view.findViewById(R.id.editTextNewPlayerName);
-
         return view;
     }
 

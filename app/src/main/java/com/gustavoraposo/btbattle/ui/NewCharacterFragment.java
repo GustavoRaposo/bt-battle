@@ -54,6 +54,7 @@ public class NewCharacterFragment extends Fragment implements View.OnClickListen
         super.onActivityCreated(savedInstanceState);
         viewModel = new ViewModelProvider(this).get(SetUpViewModel.class);
         mNavController = Navigation.findNavController(requireView());
+        viewModel.hideSystemUi(requireActivity());
         selectClass(0);
     }
 
@@ -73,6 +74,9 @@ public class NewCharacterFragment extends Fragment implements View.OnClickListen
                 viewModel.setPlayerClass(playerClass);
                 viewModel.setPlayer();
                 mNavController.navigate(R.id.homeFragment);
+                break;
+            case R.id.buttonNewCharacterCancel:
+                requireActivity().onBackPressed();
                 break;
         }
     }
