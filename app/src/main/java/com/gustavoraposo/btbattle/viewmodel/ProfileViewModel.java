@@ -54,4 +54,8 @@ public class ProfileViewModel extends ViewModel {
     public int getExpProgress(){
         return (int) ((facade.getPlayer().getExp()/facade.getPlayer().getExpToLevelUp()) * 100);
     }
+
+    public void sleep(){
+        facade.sleep();
+    }
 }

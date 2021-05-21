@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
 import com.gustavoraposo.btbattle.R;
-import com.gustavoraposo.btbattle.model.data.Monster;
+import com.gustavoraposo.btbattle.model.data.Player;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MonsterAdapter extends RecyclerView.Adapter<MonsterAdapter.MonsterViewHolder> {
 
-    private List<Monster> mList = new ArrayList<>();
+    private List<Player> mList = new ArrayList<>();
     private RecyclerViewClickInterface recyclerViewClickInterface;
 
     public MonsterAdapter(RecyclerViewClickInterface recyclerViewClickInterface){
@@ -36,8 +36,8 @@ public class MonsterAdapter extends RecyclerView.Adapter<MonsterAdapter.MonsterV
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull MonsterAdapter.MonsterViewHolder holder, int position) {
-        holder.mTextViewItemFloorMonsterName.setText(mList.get(position).getMonsterName());
-        holder.mTextViewItemFloorMonsterLevel.setText(String.valueOf(mList.get(position).getLevel()));
+        holder.mTextViewItemFloorMonsterName.setText(mList.get(position).getName());
+        holder.mTextViewItemFloorMonsterLevel.setText(String.format("Lvl %d", mList.get(position).getLevel()));
     }
 
     @Override
@@ -45,7 +45,7 @@ public class MonsterAdapter extends RecyclerView.Adapter<MonsterAdapter.MonsterV
         return mList.size();
     }
 
-    public void setList(List<Monster> list){
+    public void setList(List<Player> list){
         mList = list;
         notifyDataSetChanged();
     }

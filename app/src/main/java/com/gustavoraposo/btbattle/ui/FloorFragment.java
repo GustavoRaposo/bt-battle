@@ -22,8 +22,7 @@ import com.google.android.material.textview.MaterialTextView;
 import com.gustavoraposo.btbattle.R;
 import com.gustavoraposo.btbattle.adapter.MonsterAdapter;
 import com.gustavoraposo.btbattle.adapter.RecyclerViewClickInterface;
-import com.gustavoraposo.btbattle.model.data.DungeonFloor;
-import com.gustavoraposo.btbattle.model.data.Monster;
+import com.gustavoraposo.btbattle.model.data.Player;
 import com.gustavoraposo.btbattle.viewmodel.DungeonViewModel;
 
 import java.util.ArrayList;
@@ -39,7 +38,7 @@ public class FloorFragment extends Fragment implements RecyclerViewClickInterfac
     private MaterialTextView mTextViewFloorPlayerHealth;
     private MaterialTextView mTextViewFloorPlayerLevel;
     private ProgressBar mProgressBarFloorPlayerExp;
-    private List<Monster> mMonsters;
+    private List<Player> mMonsters;
 
     public static FloorFragment newInstance() {
         return new FloorFragment();
@@ -71,21 +70,17 @@ public class FloorFragment extends Fragment implements RecyclerViewClickInterfac
         mNavController = Navigation.findNavController(requireView());
         mMonsters = viewModel.getMonsters();
         mMonsterAdapter.setList(mMonsters);
-        mTextViewFloorPlayerName.setText(viewModel.getPlayer().getName());
-        mTextViewFloorPlayerHealth.setText(
-                String.format(
-                        "%d / %d",
-                        viewModel.getPlayer().getHealthPoints(),
-                        viewModel.getPlayer().getBaseHealthPoints()
-                )
-        );
-        mTextViewFloorPlayerLevel.setText(String.valueOf(viewModel.getPlayer().getLevel()));
-        mProgressBarFloorPlayerExp.setProgress(viewModel.getExpProgress());
+        updateStats();
     }
 
     @Override
     public void onItemClick(int position) {
-        //todo: viewModel.battle(position)
+        if(viewModel.battle(mMonsters.get(position))){
+            mMonsters.remove(position);
+            mMonsterAdapter.setList(mMonsters);
+
+        }
+        updateStats();
     }
 
     @Override
@@ -98,5 +93,19 @@ public class FloorFragment extends Fragment implements RecyclerViewClickInterfac
         if(v.getId() == R.id.buttonFloorBack){
             requireActivity().onBackPressed();
         }
+    }
+
+    @SuppressLint("DefaultLocale")
+    private void updateStats(){
+        mTextViewFloorPlayerName.setText(viewModel.getPlayer().getName());
+        mTextViewFloorPlayerHealth.setText(
+                String.format(
+                        "%d / %d",
+                        viewModel.getPlayer().getHealthPoints(),
+                        viewModel.getPlayer().getBaseHealthPoints()
+                )
+        );
+        mTextViewFloorPlayerLevel.setText((String.valueOf(viewModel.getPlayer().getLevel())));
+        mProgressBarFloorPlayerExp.setProgress(viewModel.getExpProgress());
     }
 }

@@ -47,6 +47,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         mTextViewLevel = view.findViewById(R.id.textViewProfileLevel);
         mProgressBarExp = view.findViewById(R.id.progressBarProfileExp);
         view.findViewById(R.id.buttonProfileBack).setOnClickListener(this);
+        view.findViewById(R.id.buttonProfileSleep).setOnClickListener(this);
 
         return view;
     }
@@ -69,6 +70,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.buttonProfileBack){
             requireActivity().onBackPressed();
+        }if (v.getId() == R.id.buttonProfileSleep){
+            viewModel.sleep();
+            mTextViewHealthPoints.setText(viewModel.getPlayerHealthPoints());
         }
     }
 }

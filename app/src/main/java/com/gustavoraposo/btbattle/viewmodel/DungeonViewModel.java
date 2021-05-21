@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel;
 
 import com.gustavoraposo.btbattle.model.Facade;
 import com.gustavoraposo.btbattle.model.data.DungeonFloor;
-import com.gustavoraposo.btbattle.model.data.Monster;
 import com.gustavoraposo.btbattle.model.data.Player;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 public class DungeonViewModel extends ViewModel {
     private Facade facade;
     private List<DungeonFloor> floors;
-    private List<Monster> monsters;
+    private List<Player> monsters;
 
     public DungeonViewModel (){
         facade = Facade.getInstance();
@@ -28,7 +27,7 @@ public class DungeonViewModel extends ViewModel {
         facade.loadMonsters(size, minLevel, maxLevel);
     }
 
-    public List<Monster> getMonsters(){
+    public List<Player> getMonsters(){
         return facade.getMonsters();
     }
 
@@ -38,5 +37,9 @@ public class DungeonViewModel extends ViewModel {
 
     public int getExpProgress(){
         return (int) ((facade.getPlayer().getExp()/facade.getPlayer().getExpToLevelUp()) * 100);
+    }
+
+    public boolean battle(Player monster){
+        return facade.battle(monster);
     }
 }

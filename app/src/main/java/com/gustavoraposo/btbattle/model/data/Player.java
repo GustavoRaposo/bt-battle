@@ -3,7 +3,7 @@ package com.gustavoraposo.btbattle.model.data;
 import java.util.Random;
 
 public class Player {
-    private String name;
+    private String playerName;
     private int playerClass;
     private int level;
     private double expToLevelUp;
@@ -21,17 +21,34 @@ public class Player {
     private int ivSpeed;
 
     public Player(String name, int playerClass){
-        this.name = name;
+        this.playerName = name;
         this.playerClass = playerClass;
         this.speed = 100;
         this.level = 0;
         setIVs();
         initPlayerValues(playerClass);
-        levelUp();
+
+        for (int i = 0; i < 5; i++){
+            levelUp();
+        }
     }
 
-    public Player(String name, int playerClass, int level, int healthPoints, int magicPoints, int defensePoints, int speed) {
-        this.name = name;
+    public Player(String playerName, int playerClass, int level){
+        this.playerName = playerName;
+        this.playerClass = playerClass;
+        this.speed = 100;
+        this.level = 0;
+        setIVs();
+        initPlayerValues(playerClass);
+
+        for (int i = 0; i < level; i++){
+            levelUp();
+        }
+        this.exp = level * 100 * 0.35;
+    }
+
+    public Player(String playerName, int playerClass, int level, int healthPoints, int magicPoints, int defensePoints, int speed) {
+        this.playerName = playerName;
         this.playerClass = playerClass;
         this.level = level;
         this.healthPoints = healthPoints;
@@ -93,6 +110,21 @@ public class Player {
                 this.baseMagicPoints = 60 + this.ivHealthPoints;
                 this.baseDefensePoints = 120 + this.ivHealthPoints;
                 break;
+            case 3:
+                this.baseHealthPoints = 40 + this.ivHealthPoints;
+                this.baseMagicPoints = 60 + this.ivHealthPoints;
+                this.baseDefensePoints = 50 + this.ivHealthPoints;
+                break;
+            case 4:
+                this.baseHealthPoints = 50 + this.ivHealthPoints;
+                this.baseMagicPoints = 50 + this.ivHealthPoints;
+                this.baseDefensePoints = 50 + this.ivHealthPoints;
+                break;
+            case 5:
+                this.baseHealthPoints = 60 + this.ivHealthPoints;
+                this.baseMagicPoints = 30 + this.ivHealthPoints;
+                this.baseDefensePoints = 60 + this.ivHealthPoints;
+                break;
         }
 
         this.healthPoints = this.baseHealthPoints;
@@ -102,7 +134,7 @@ public class Player {
 
     public void levelUp(){
         this.level = this.level + 1;
-        this.expToLevelUp = (int) (this.expToLevelUp + (this.level * 100 * 1.25));
+        this.expToLevelUp = (int)(this.level * 100 * 1.25);
         this.exp = 0;
 
 
@@ -148,11 +180,11 @@ public class Player {
     }
 
     public String getName() {
-        return name;
+        return playerName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.playerName = name;
     }
 
     public int getPlayerClass() {
@@ -183,8 +215,9 @@ public class Player {
         return exp;
     }
 
-    public void setExp(int exp) {
+    public void setExp(double exp) {
         this.exp = exp;
+        if(this.exp >= this.expToLevelUp) levelUp();
     }
 
     public int getBaseHealthPoints() {
@@ -216,7 +249,9 @@ public class Player {
     }
 
     public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
+        if(healthPoints < 0){
+            this.healthPoints = 0;
+        }else this.healthPoints = healthPoints;
     }
 
     public int getMagicPoints() {
